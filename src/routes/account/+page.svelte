@@ -6,8 +6,8 @@
 	export let data
 	export let form
 
-	let { session, supabase, profile } = data
-	$: ({ session, supabase, profile } = data)
+	let { session, supabase, profile, tasks } = data
+	$: ({ session, supabase, profile, tasks } = data)
 
 	let profileForm: HTMLFormElement
 	let loading = false
@@ -76,3 +76,15 @@
 		</div>
 	</form>
 </div>
+
+{#if tasks !== null}
+  <h1>Tasks</h1>
+  <ul>
+    {#each data.tasks as task}
+      <li>
+        <div>{task.name}</div>
+        <div>{task.description}</div>
+      </li>
+    {/each}
+  </ul>
+{/if}
