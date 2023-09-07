@@ -3,6 +3,8 @@ import { fail, redirect } from '@sveltejs/kit'
 export const load = async ({ locals: { supabase, getSession } }) => {
   const session = await getSession()
 
+  console.log('in account ss load')
+
   if (!session) {
     throw redirect(303, '/')
   }
@@ -13,7 +15,6 @@ export const load = async ({ locals: { supabase, getSession } }) => {
     .eq('id', session.user.id)
     .single()
   const { data: tasks } = await supabase.from("tasks").select(`created_at, name, description, completed_at, index`);
-  console.log(tasks);
 
   return { session, profile, tasks }
 }

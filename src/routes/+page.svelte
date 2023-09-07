@@ -1,7 +1,6 @@
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
 	import { Auth } from '@supabase/auth-ui-svelte'
-	import { ThemeSupa } from '@supabase/auth-ui-shared'
 
 	export let data
 </script>
@@ -17,7 +16,9 @@
 			view="magic_link"
 			redirectTo={`${data.url}/auth/callback`}
 			showLinks={false}
-			appearance={{ theme: ThemeSupa, style: { input: 'color: #fff' } }}
 		/>
 	</div>
 </div>
+<form method="POST">
+  <button formaction="?/login&provider=google">Google</button>
+</form>

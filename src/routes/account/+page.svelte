@@ -30,6 +30,7 @@
 			update()
 		}
 	}
+
 </script>
 
 <div class="form-widget">
