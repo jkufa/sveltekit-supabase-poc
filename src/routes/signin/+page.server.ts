@@ -12,7 +12,7 @@ export const actions = {
 			return;
 		}
 
-		await signInWithProvider(provider, supabase);
+		await signInWithProvider(url, provider, supabase);
 	}
 };
 
@@ -24,12 +24,10 @@ async function signInDefault(request: Request, supabase: SupabaseClient) {
 
 	if (error && error instanceof AuthApiError) {
 		if (error.status === 400) {
-			redirect(303, '/signin');
 			return fail(400, {
 				error: 'Invalid credentials'
 			});
 		}
-		redirect(303, '/signin');
 		return fail(500, {
 			message: 'Server error. Try again later.'
 		});
@@ -37,7 +35,7 @@ async function signInDefault(request: Request, supabase: SupabaseClient) {
 	throw redirect(303, '/');
 }
 
-async function signInWithProvider(provider: Provider, supabase: SupabaseClient) {
+async function signInWithProvider(url: URL, provider: Provider, supabase: SupabaseClient) {
 	// If the provider is not supported, return a 400
 	if (!PROVIDERS.includes(provider)) {
 		return fail(400, {
@@ -47,7 +45,11 @@ async function signInWithProvider(provider: Provider, supabase: SupabaseClient) 
 
 	// Sign in with the provider
 	const { data, error: err } = await supabase.auth.signInWithOAuth({
-		provider: provider
+		provider: provider,
+		options: {
+			// Send the, to the callback to exchange the code for a session cookie
+			redirectTo: `${url.origin}/auth/callback`
+		}
 	});
 
 	// If there's an error returned from signing in, return a 500 with the error
@@ -57,5 +59,4 @@ async function signInWithProvider(provider: Provider, supabase: SupabaseClient) 
 		});
 	}
 	throw redirect(303, data.url);
-	// return data;
 }

@@ -8,3 +8,12 @@
 		>Continue with {titleCase(provider)}</button
 	>
 </form>
+
+<style lang="scss">
+	button {
+		width: 100%;
+		padding: 1rem;
+		border-radius: 0.4375rem; // 7px
+		border: 1px solid #ccc;
+	}
+</style>

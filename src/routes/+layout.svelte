@@ -45,7 +45,7 @@
 	<slot />
 </main>
 
-<style lang="scss">
+<style global lang="scss">
 	.main-container {
 		display: flex;
 		flex-direction: column;
