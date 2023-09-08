@@ -7,7 +7,7 @@ import type { Database } from '../database.types';
  * it is essential to create a Supabase client in the root layout load.
  */
 export const load = async ({ fetch, data, depends }) => {
-	depends('supabase:auth');
+	depends('supabase:auth'); // tells sveltekit this load function should be re-run when the auth session changes
 
 	const supabase = createSupabaseLoadClient<Database>({
 		supabaseUrl: PUBLIC_SUPABASE_URL,

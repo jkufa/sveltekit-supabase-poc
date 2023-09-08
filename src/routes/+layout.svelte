@@ -29,7 +29,20 @@
 
 <nav>
 	<a href="/">home</a>
-	<a href="/auth">login</a>
+	<a href="/signin">sign in</a>
 </nav>
 
-<slot />
+<main class="main-container">
+	<slot />
+</main>
+
+<style lang="scss">
+	.main-container {
+		display: flex;
+		flex-direction: column;
+		max-width: 428px; // iPhone 14 Pro Max width
+		margin: 0 auto;
+		margin-top: 4rem;
+		gap: 1rem;
+	}
+</style>
