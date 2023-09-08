@@ -26,10 +26,9 @@
 		return () => subscription.unsubscribe();
 	});
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut()
-  }
-
+	const handleSignOut = async () => {
+		await supabase.auth.signOut();
+	};
 </script>
 
 <nav>
