@@ -25,6 +25,11 @@
 		// cleanup function
 		return () => subscription.unsubscribe();
 	});
+
+  const handleSignOut = async () => {
+    await supabase.auth.signOut()
+  }
+
 </script>
 
 <nav>
@@ -33,7 +38,7 @@
 		<a href="/signin">sign in</a>
 		<a href="/register">register</a>
 	{:else}
-		<a href="/signout">sign out</a>
+		<a href="/logout" on:click={handleSignOut}>log out</a>
 	{/if}
 </nav>
 

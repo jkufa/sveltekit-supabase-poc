@@ -43,7 +43,7 @@ export interface Database {
 					created_at: string;
 					description: string | null;
 					id: string;
-					index: number | null;
+					index: number;
 					name: string;
 					user_id: string | null;
 				};

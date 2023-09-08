@@ -11,10 +11,6 @@
 	const handleSignIn = async () => {
 		await supabase.auth.signInWithPassword({ email, password });
 	};
-
-	const handleSignOut = async () => {
-		await supabase.auth.signOut();
-	};
 </script>
 
 <h1>Taskies!</h1>
