@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import OauthProvider from '$lib/components/OauthProvider.svelte';
+	import { PROVIDERS } from '$lib/constants/providers';
 
 	export let data;
 	let { supabase } = data;
@@ -32,6 +34,10 @@
 </div>
 <!-- Sign up form -->
 <span>Don't have an account? <a href="/register">Create one</a></span>
+
+{#each PROVIDERS as provider}
+	<OauthProvider {provider} />
+{/each}
 
 <style lang="scss">
 	h1,
