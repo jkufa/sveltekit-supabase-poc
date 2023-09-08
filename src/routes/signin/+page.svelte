@@ -44,8 +44,8 @@
 	}
 	input,
 	button {
-		padding: 0.5rem;
-		border-radius: 0.25rem;
+		padding: 1rem;
+		border-radius: 0.4375rem; // 7px
 		border: 1px solid #ccc;
 	}
 

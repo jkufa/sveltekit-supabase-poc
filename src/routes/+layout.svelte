@@ -29,7 +29,12 @@
 
 <nav>
 	<a href="/">home</a>
-	<a href="/signin">sign in</a>
+	{#if !session}
+		<a href="/signin">sign in</a>
+		<a href="/register">register</a>
+	{:else}
+		<a href="/signout">sign out</a>
+	{/if}
 </nav>
 
 <main class="main-container">
