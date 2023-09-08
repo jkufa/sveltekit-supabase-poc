@@ -13,7 +13,7 @@
 		"format": "prettier --plugin-search-dir . --write .",
 		"test:integration": "playwright test",
 		"test:unit": "vitest",
-    "test:run": "yarn test:integration && yarn test:unit --run",
+		"test:run": "yarn test:integration && yarn test:unit --run",
 		"postinstall": "husky install"
 	},
 	"devDependencies": {
@@ -41,8 +41,6 @@
 	"type": "module",
 	"dependencies": {
 		"@supabase/auth-helpers-sveltekit": "^0.10.2",
-		"@supabase/auth-ui-shared": "^0.1.6",
-		"@supabase/auth-ui-svelte": "^0.2.4",
 		"@supabase/supabase-js": "^2.33.1"
 	}
 }
