@@ -1,12 +1,12 @@
-// src/routes/auth/callback/+server.ts
-import { redirect } from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit';
 
 export const GET = async ({ url, locals: { supabase } }) => {
-  const code = url.searchParams.get('code') // get the code from the url query params
+	// Get the auth code from the query string
+	const code = url.searchParams.get('code');
 
-  if (code) {
-    await supabase.auth.exchangeCodeForSession(code) // exchange the code for a session
-  }
+	if (code) {
+		await supabase.auth.exchangeCodeForSession(code);
+	}
 
-  throw redirect(303, '/account')
-}
+	throw redirect(303, '/');
+};
