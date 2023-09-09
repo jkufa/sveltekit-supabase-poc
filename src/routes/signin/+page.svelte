@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import OauthProvider from '$lib/components/OauthProvider.svelte';
+	import { PROVIDERS } from '$lib/constants/providers';
 
 	export let data;
 	let { supabase } = data;
@@ -27,11 +29,16 @@
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password" required bind:value={password} />
 		</div>
-		<button type="submit"> Sign in </button>
+		<div class="submit-container">
+			<button type="submit"> Sign in </button>
+			<div>Don't have an account? <a href="/register">Create one</a></div>
+		</div>
 	</form>
 </div>
-<!-- Sign up form -->
-<span>Don't have an account? <a href="/register">Create one</a></span>
+<span class="or-line">Or</span>
+{#each PROVIDERS as provider}
+	<OauthProvider {provider} />
+{/each}
 
 <style lang="scss">
 	h1,
@@ -56,5 +63,15 @@
 		flex-direction: column;
 		gap: 1rem;
 		height: 100%;
+	}
+	.submit-container {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+	.or-line {
+		width: 100%;
+		text-align: center;
+		margin: 0.5rem 0;
 	}
 </style>
