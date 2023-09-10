@@ -28,7 +28,7 @@
 	ul {
 		margin: 0;
 		padding: 0;
-    list-style: none;
+		list-style: none;
 		li {
 			margin: 0.5rem 0;
 			&:first-child {

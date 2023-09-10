@@ -1,8 +1,6 @@
 <script lang="ts">
 	let name: string;
 	let description: string;
-
-
 </script>
 
 <form action="?/create" method="POST">
