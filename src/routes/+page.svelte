@@ -1,4 +1,7 @@
 <script lang="ts">
+	import Create from '$lib/components/task/Create.svelte';
+	import Task from '$lib/components/task/Task.svelte';
+
 	export let data;
 
 	let { session, supabase, tasks } = data;
@@ -12,21 +15,22 @@
 	<ul>
 		{#each tasks as task}
 			<li>
-				<span class="task-name">{task.name}</span>
-				<p>{task.description}</p>
+				<Task {task} />
 			</li>
 		{/each}
 	</ul>
 {:else}
 	<p>You have no tasks! The heck??</p>
 {/if}
+<Create />
 
 <style lang="scss">
 	ul {
 		margin: 0;
 		padding: 0;
+    list-style: none;
 		li {
-			margin: 1rem 0;
+			margin: 0.5rem 0;
 			&:first-child {
 				margin-top: 0;
 			}
@@ -34,12 +38,5 @@
 				margin-bottom: 0;
 			}
 		}
-	}
-	p {
-		margin: 0.3rem 0;
-		opacity: 0.65;
-	}
-	.task-name {
-		font-weight: bold;
 	}
 </style>
