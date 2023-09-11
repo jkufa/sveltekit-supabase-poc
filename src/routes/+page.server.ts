@@ -22,7 +22,6 @@ export const actions: Actions = {
 		redirect(303, '/');
 	},
 	create: async ({ request, locals: { supabase } }) => {
-		console.log(request);
 		const data = await request.formData();
 		const uid = (await supabase.auth.getUser()).data.user?.id;
 		const { data: task, error } = await supabase
@@ -33,8 +32,6 @@ export const actions: Actions = {
 				description: data.get('description')
 			})
 			.single();
-		console.log(task);
-		console.log(error);
 
 		return { body: task };
 	}

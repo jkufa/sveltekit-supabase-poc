@@ -1,3 +1,5 @@
+import { writable } from 'svelte/store';
+
 export type Task = {
 	completed_at?: string | null;
 	created_at?: string;
@@ -7,3 +9,5 @@ export type Task = {
 	name?: string;
 	user_id?: string | null;
 };
+
+export const tasks = writable<Task[]>([]);

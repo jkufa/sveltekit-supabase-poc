@@ -2,6 +2,7 @@
 	import Create from '$lib/components/task/Create.svelte';
 	import Task from '$lib/components/task/Task.svelte';
 
+	// TODO: update tasks reactively with a subscribe
 	export let data;
 
 	let { session, supabase, tasks } = data;
@@ -22,7 +23,7 @@
 {:else}
 	<p>You have no tasks! The heck??</p>
 {/if}
-<Create />
+<Create {supabase} {tasks} />
 
 <style lang="scss">
 	ul {
