@@ -11,7 +11,7 @@ export const load: PageServerLoad = async ({ url, locals: { supabase, getSession
 	// Read tasks
 	const { data: tasks } = await supabase
 		.from('tasks')
-		.select(`created_at, name, description, completed_at, index`);
+		.select(`id, created_at, name, description, completed_at, index`);
 
 	return { url: url.origin, tasks };
 };

@@ -16,7 +16,7 @@
 	<ul>
 		{#each tasks as task}
 			<li>
-				<Task {task} />
+				<Task {task} {data} />
 			</li>
 		{/each}
 	</ul>

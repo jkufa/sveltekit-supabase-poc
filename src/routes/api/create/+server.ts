@@ -5,14 +5,15 @@ export const POST = async ({ request, locals: { supabase, getSession } }) => {
 	const name = formData.get('name');
 	const description = formData.get('description');
 
-	const session = await getSession();
-
 	const { error } = await supabase.from('tasks').insert({
 		name,
 		description
 	});
 
-	redirect(303, '/');
+	if (error)
+		throw fail(500, {
+			error: error.message
+		});
 
 	throw redirect(303, '/');
 };

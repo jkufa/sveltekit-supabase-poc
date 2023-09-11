@@ -1,11 +1,18 @@
 <script lang="ts">
+	import Delete from './Delete.svelte';
 	import type { Task } from './Task';
+
+	export let data;
+
+	let { session, supabase, tasks } = data;
+
 	export let task: Task;
 </script>
 
 <div class="container">
 	<span class="name">{task.name}</span>
 	<p class="description">{task.description}</p>
+	<Delete {task} {supabase} />
 </div>
 
 <style lang="scss">
