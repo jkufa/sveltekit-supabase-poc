@@ -2,10 +2,6 @@
 	import Delete from './Delete.svelte';
 	import type { Task } from './Task';
 
-	export let data;
-
-	let { session, supabase, tasks } = data;
-
 	export let task: Task;
 </script>
 
@@ -14,7 +10,7 @@
 	{#if task.description}
 		<p class="description">{task.description}</p>
 	{/if}
-	<Delete {task} {supabase} />
+	<Delete {task} />
 </div>
 
 <style lang="scss">
@@ -28,7 +24,7 @@
 	}
 
 	.name {
-    font-size: 18px;
+		font-size: 18px;
 		font-weight: bold;
 	}
 
