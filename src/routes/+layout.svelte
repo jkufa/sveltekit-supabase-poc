@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 
@@ -32,10 +33,9 @@
 </script>
 
 <nav>
-	<a href="/">home</a>
+	<a href="/" aria-current={$page.url.pathname === '/'}>home</a>
 	{#if !session}
-		<a href="/signin">sign in</a>
-		<a href="/register">register</a>
+		<a href="/signin">sign in / register</a>
 	{:else}
 		<a href="/logout" on:click={handleSignOut}>log out</a>
 	{/if}
@@ -53,5 +53,9 @@
 		margin: 0 auto;
 		margin-top: 4rem;
 		gap: 1rem;
+	}
+
+	:global(input, button) {
+		font-size: 16px;
 	}
 </style>
