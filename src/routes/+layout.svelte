@@ -54,4 +54,8 @@
 		margin-top: 4rem;
 		gap: 1rem;
 	}
+
+  :global(input, button) {
+    font-size: 16px;
+  }
 </style>

@@ -28,12 +28,12 @@
 	}
 
 	.name {
+    font-size: 18px;
 		font-weight: bold;
 	}
 
 	.description {
 		margin: 0.3rem 0;
 		opacity: 0.65;
-		font-size: 14px;
 	}
 </style>
