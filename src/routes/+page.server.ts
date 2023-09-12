@@ -1,4 +1,4 @@
-import { redirect, type Actions } from '@sveltejs/kit';
+import { redirect, type Actions, fail } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ url, locals: { supabase, getSession } }) => {
@@ -33,6 +33,26 @@ export const actions: Actions = {
 			})
 			.single();
 
+		if (error) {
+			throw fail(500, {
+				error: error.message
+			});
+		}
+
 		return { body: task };
+	},
+	delete: async ({ request, locals: { supabase } }) => {
+		const formData = await request.formData();
+		const id = formData.get('id') as string;
+
+		const { error } = await supabase.from('tasks').delete().eq('id', id);
+
+		if (error) {
+			throw fail(500, {
+				error: error.message
+			});
+		}
+
+		throw redirect(303, '/');
 	}
 };

@@ -11,7 +11,9 @@
 
 <div class="container">
 	<span class="name">{task.name}</span>
-	<p class="description">{task.description}</p>
+	{#if task.description}
+		<p class="description">{task.description}</p>
+	{/if}
 	<Delete {task} {supabase} />
 </div>
 

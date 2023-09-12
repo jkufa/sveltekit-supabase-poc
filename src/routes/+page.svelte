@@ -23,7 +23,7 @@
 {:else}
 	<p>You have no tasks! The heck??</p>
 {/if}
-<Create {supabase} {tasks} />
+<Create />
 
 <style lang="scss">
 	ul {

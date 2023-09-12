@@ -1,6 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 
-export const POST = async ({ request, locals: { supabase, getSession } }) => {
+export const POST = async ({ request, locals: { supabase } }) => {
 	const formData = await request.formData();
 	const id = formData.get('id') as string;
 
