@@ -24,22 +24,17 @@ export const actions: Actions = {
 	create: async ({ request, locals: { supabase } }) => {
 		const data = await request.formData();
 		const uid = (await supabase.auth.getUser()).data.user?.id;
-		const { data: task, error } = await supabase
-			.from('tasks')
-			.insert({
-				user_id: uid,
-				name: data.get('name'),
-				description: data.get('description')
-			})
-			.single();
+		const { data: task, error } = await supabase.from('tasks').insert({
+			user_id: uid,
+			name: data.get('name'),
+			description: data.get('description')
+		});
 
 		if (error) {
 			throw fail(500, {
 				error: error.message
 			});
 		}
-
-		return { body: task };
 	},
 	delete: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();

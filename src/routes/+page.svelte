@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { fly, slide } from 'svelte/transition';
 	import Create from '$lib/components/task/Create.svelte';
 	import Task from '$lib/components/task/Task.svelte';
 
@@ -8,14 +9,14 @@
 	let { session, supabase, tasks } = data;
 	$: ({ session, supabase, tasks } = data);
 
-	if (tasks) tasks?.sort((a, b) => a.index - b.index);
+	// if (tasks) tasks?.sort((a, b) => a.index - b.index);
 </script>
 
 <h1>Your tasks</h1>
 {#if session && tasks && tasks.length > 0}
 	<ul>
 		{#each tasks as task}
-			<li>
+			<li in:fly={{ y: 10 }} out:slide>
 				<Task {task} {data} />
 			</li>
 		{/each}
