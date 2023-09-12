@@ -7,7 +7,7 @@
 
 <form action="?/create" method="POST" use:enhance>
 	<div class="inputs-container">
-		<input type="text" placeholder="Task name" name="name" autocomplete="off" bind:value={name} />
+		<input type="text" placeholder="Task name" name="name" autocomplete="off" required bind:value={name} />
 		<input type="text" placeholder="Task description" name="description" bind:value={description} />
 	</div>
 	<button> Add task </button>

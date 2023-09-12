@@ -47,7 +47,5 @@ export const actions: Actions = {
 				error: error.message
 			});
 		}
-
-		throw redirect(303, '/');
 	}
 };
