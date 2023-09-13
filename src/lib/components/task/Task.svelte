@@ -40,11 +40,11 @@
 	}
 
 	.name {
-		font-size: 18px;
 		font-weight: bold;
 	}
 
 	.description {
+		font-size: 14px;
 		margin: 0;
 		opacity: 0.65;
 	}
