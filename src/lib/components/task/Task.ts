@@ -8,6 +8,7 @@ export type Task = {
 	index?: number | null;
 	name?: string;
 	user_id?: string | null;
+	completed?: boolean;
 };
 
 export const tasks = writable<Task[]>([]);

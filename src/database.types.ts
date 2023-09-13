@@ -46,6 +46,7 @@ export interface Database {
 					index: number;
 					name: string;
 					user_id: string | null;
+					completed: boolean;
 				};
 				Insert: {
 					completed_at?: string | null;
@@ -55,6 +56,7 @@ export interface Database {
 					index?: number | null;
 					name: string;
 					user_id?: string | null;
+					completed?: boolean;
 				};
 				Update: {
 					completed_at?: string | null;
@@ -64,6 +66,7 @@ export interface Database {
 					index?: number | null;
 					name?: string;
 					user_id?: string | null;
+					completed?: boolean;
 				};
 				Relationships: [
 					{
