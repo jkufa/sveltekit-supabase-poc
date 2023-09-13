@@ -1,12 +1,16 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 
+	// Always need to know the length of the tasks array
+	export let index: number;
+
 	let name: string;
 	let description: string;
 </script>
 
 <form action="?/create" method="POST" use:enhance>
 	<div class="inputs-container">
+		<input type="hidden" name="index" value={index} />
 		<input
 			type="text"
 			placeholder="Task name"

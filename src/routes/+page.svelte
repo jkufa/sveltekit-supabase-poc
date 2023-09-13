@@ -8,8 +8,6 @@
 
 	let { session, supabase, tasks } = data;
 	$: ({ session, supabase, tasks } = data);
-
-	// if (tasks) tasks?.sort((a, b) => a.index - b.index);
 </script>
 
 <h1>Your tasks</h1>
@@ -17,14 +15,14 @@
 	<ul>
 		{#each tasks as task}
 			<li in:fly={{ y: 10 }} out:slide>
-				<Task {task} {data} />
+				<Task {task} />
 			</li>
 		{/each}
 	</ul>
 {:else}
 	<p>You have no tasks! The heck??</p>
 {/if}
-<Create />
+<Create index={tasks?.length ?? 0} />
 
 <style lang="scss">
 	ul {
