@@ -15,27 +15,26 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v1
         with:
-          node-version: 18
-          cache: 'yarn'
+          bun-version: latest
 
       - name: Install dependencies
-        run: yarn
+        run: bun install
 
       - name: Create .env file
         run: |
           echo "${{ secrets.ENV_SECRETS }}" > .env
 
       - name: Build SvelteKit application
-        run: yarn build
+        run: bun build
 
       - name: Install playwright browsers
-        run: yarn playwright install --with-deps
+        run: bun playwright install --with-deps
 
       - name: Test SvelteKit application
-        run: yarn test:run
+        run: bun test:run
 
       - name: Lint SvelteKit application
-        run: yarn lint
+        run: bun lint
