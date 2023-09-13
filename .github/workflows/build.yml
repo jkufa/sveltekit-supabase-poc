@@ -28,7 +28,7 @@ jobs:
           echo "${{ secrets.ENV_SECRETS }}" > .env
 
       - name: Build SvelteKit application
-        run: bun build
+        run: bun run build
 
       - name: Install playwright browsers
         run: bun playwright install --with-deps
