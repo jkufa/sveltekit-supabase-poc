@@ -40,12 +40,19 @@
 	}
 
 	.name {
-		font-weight: bold;
+		font-weight: 500;
 	}
 
 	.description {
 		font-size: 14px;
 		margin: 0;
 		opacity: 0.65;
+		word-wrap: break-word;
+		word-break: break-all;
+		overflow: hidden;
+		// TODO: update this to use line-clamp & flexbox when browsers support it
+		display: -webkit-box;
+		-webkit-line-clamp: 1;
+		-webkit-box-orient: vertical;
 	}
 </style>
