@@ -11,7 +11,8 @@ export const load: PageServerLoad = async ({ url, locals: { supabase, getSession
 	// Read tasks
 	const { data: tasks } = await supabase
 		.from('tasks')
-		.select(`id, created_at, name, description, completed_at, index`);
+		.select(`id, created_at, name, description, completed_at, index`)
+		.order('index', { ascending: true });
 
 	return { url: url.origin, tasks };
 };
@@ -27,11 +28,12 @@ export const actions: Actions = {
 		const { data: task, error } = await supabase.from('tasks').insert({
 			user_id: uid,
 			name: data.get('name'),
-			description: data.get('description')
+			description: data.get('description'),
+			index: data.get('index')
 		});
 
 		if (error) {
-			throw fail(500, {
+			return fail(500, {
 				error: error.message
 			});
 		}
@@ -43,7 +45,7 @@ export const actions: Actions = {
 		const { error } = await supabase.from('tasks').delete().eq('id', id);
 
 		if (error) {
-			throw fail(500, {
+			return fail(500, {
 				error: error.message
 			});
 		}
