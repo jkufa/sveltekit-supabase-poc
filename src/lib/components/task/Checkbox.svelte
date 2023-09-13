@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import type { Task } from './Task';
+	import Checkmark from './Checkmark.svelte';
 
 	export let task: Task;
+
+	const checkTheBox = () => {
+		task.completed = !task.completed;
+	};
 </script>
 
 <form class="checkbox-container" action="?/setComplete" method="POST" use:enhance>
@@ -14,12 +19,12 @@
 		id="completed"
 		name="completed"
 		class={task.completed ? 'completed' : 'not-completed'}
-		on:click={() => {
-			console.log(task.completed);
-			task.completed = !task.completed;
-			console.log(task.completed);
-		}}
-	/>
+		on:click={checkTheBox}
+	>
+		{#if task.completed}
+			<Checkmark />
+		{/if}
+	</button>
 </form>
 
 <style lang="scss">
@@ -28,7 +33,7 @@
 		gap: 0.5rem;
 
 		.completed {
-			background-color: #cecece;
+			background-color: #efefef;
 		}
 		.not-completed {
 			background-color: transparent;
