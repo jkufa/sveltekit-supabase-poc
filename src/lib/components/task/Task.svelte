@@ -6,7 +6,7 @@
 	export let task: Task;
 </script>
 
-<div class="container">
+<div class="container {task.completed ? 'completed' : ''}">
 	<Checkbox {task} />
 	<div class="text-container">
 		<span class="name">{task.name}</span>
@@ -26,6 +26,7 @@
 		padding: 1rem 1.5rem;
 		border-radius: 0.4375rem; // 7px
 		border: 1px solid #ccc;
+		transition: opacity 0.2s ease-in-out;
 	}
 	.text-container {
 		display: flex;
@@ -54,5 +55,13 @@
 		display: -webkit-box;
 		-webkit-line-clamp: 1;
 		-webkit-box-orient: vertical;
+	}
+
+	.completed {
+		opacity: 0.5;
+		.description,
+		.name {
+			text-decoration: line-through;
+		}
 	}
 </style>
